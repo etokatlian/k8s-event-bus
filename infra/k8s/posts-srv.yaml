@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  type: NodePort
+  selector: # we are telling this service to find all pods with label of posts
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000 # the port of the NodePort service
+      targetPort: 4000 # the port our application is listening on
